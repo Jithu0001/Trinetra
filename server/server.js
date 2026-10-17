@@ -13,7 +13,7 @@ app.use(cors({
     'https://localhost:5173', // Allows secure local Vite frontend (HTTPS)
     'https://trinetra-client.vercel.app'
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
