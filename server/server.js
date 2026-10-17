@@ -22,6 +22,12 @@ app.use((err, _req, res, _next) => {
   res.status(err.status || 500).json({ error: err.status ? err.message : 'Server error' });
 });
 
-await mongoose.connect(process.env.MONGO_URI);
-const port = process.env.PORT || 5000;
+await mongoose.connect(process.env.MONGODB_URI, {
+  ssl: true,
+  // If the issue persists, you can temporarily add this to debug:
+  // tlsAllowInvalidCertificates: false 
+})
+.then(() => console.log("MongoDB Connected..."))
+.catch(err => console.error("Database connection error:", err));
+const port = process.env.PORT || 10000;
 app.listen(port, () => console.log(`API running on port ${port}`));
