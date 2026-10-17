@@ -7,6 +7,15 @@ import auth from './routes/auth.js';
 import potholes from './routes/potholes.js';
 
 const app = express();
+app.use(cors({
+  origin: [ 
+    'http://localhost:5173',  // Allows local Vite frontend (HTTP)
+    'https://localhost:5173'  // Allows secure local Vite frontend (HTTPS)
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
 app.set('trust proxy', 1); // needed behind Render's proxy (correct IPs for rate limiting)
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({ origin: (process.env.CLIENT_URL || 'http://localhost:5173').split(',') }));
