@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ------------------------------------------------------------------
+   Trinetra - global tokens, reset and shared bits
+   Fonts: Plus Jakarta Sans (everything), Instrument Serif (big editorial
+   lines and numerals), Caveat (small handwritten notes)
+   ------------------------------------------------------------------ */
+:root {
+  --paper: #ffffff;
+  --paper-2: #f6f6f3;
+  --ink: #111318;
+  --ink-2: #3a3f4b;
+  --muted: #6b7280;
+  --line: #e8e8e3;
+  --accent: #ff5a1f;
+  --accent-ink: #d9480f;
+  --red: #e5383b;
+  --orange: #f08c00;
+  --green: #1f9d55;
+  --blue: #2563eb;
+
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --font-hand: 'Caveat', 'Segoe Print', cursive;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+#root { min-height: 100%; }
+img, video, svg { max-width: 100%; }
+a { color: inherit; }
+button, input, select { font-family: inherit; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+/* handwritten note, used sparingly */
+.hand { font-family: var(--font-hand); font-weight: 600; color: var(--accent-ink); line-height: 1; }
+
+/* severity chips, shared by scanner + admin + landing */
+.chip { display: inline-block; padding: 3px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; color: #fff; letter-spacing: .01em; }
+.chip.HIGH { background: #e5383b; }
+.chip.MEDIUM { background: #e8890c; }
+.chip.LOW { background: #1f9d55; }
+
+/* route loading screen */
+.boot { min-height: 100svh; display: grid; place-items: center; background: var(--paper); color: var(--ink); }
+.boot svg { width: 56px; height: 56px; animation: boot-pulse 1.4s ease-in-out infinite; }
+@keyframes boot-pulse { 0%, 100% { transform: scale(.9); opacity: .55; } 50% { transform: scale(1.05); opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

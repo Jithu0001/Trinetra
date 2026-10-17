@@ -1,0 +1,14 @@
+# Ignore OS specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment variables and API keys
+.env
+
+# Ignore build outputs and dependencies
+dist/
+node_modules/
+
+# Ignore all logs, but track the critical error log
+*.log
+!critical-error.log
